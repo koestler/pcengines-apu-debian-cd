@@ -13,7 +13,7 @@ d-i netcfg/get_hostname string apu
 
 d-i netcfg/get_hostname seen false
 
-d-i netcfg/choose_interface select eth0
+d-i netcfg/choose_interface select enp1s0
 
 # Automatically label the disk without asking
 d-i partman-auto/choose_recipe select boot-root
@@ -56,6 +56,16 @@ d-i grub-installer/bootdev  string default
 # kernel is to be installed.
 d-i base-installer/kernel/image string linux-image-amd64
 
+### Set the clock during installation
+d-i clock-setup/utc boolean true
+d-i clock-setup/ntp boolean true
+d-i clock-setup/ntp-server string pool.ntp.org
+
+# By default the installer requires that repositories be authenticated
+# using a known gpg key. Comment out this to disable that
+# authentication. Warning: Insecure, not recommended.
+# d-i debian-installer/allow_unauthenticated boolean true
+
 
 # Some versions of the installer can report back on what software you have
 # installed, and what software you use. The default is not to report back,
@@ -70,8 +80,6 @@ d-i debian-installer/locale string en_US.UTF-8
 d-i debian-installer/language string en
 d-i debian-installer/country string CH
 
-### Clock and time zone setup
-d-i clock-setup/utc boolean true
 d-i time/zone string Europe/Zurich
 
 passwd   passwd/root-password    password pcengines
@@ -80,10 +88,9 @@ passwd   passwd/root-password-again  password pcengines
 
 d-i mirror/protocol string http
 d-i mirror/country string manual
-d-i mirror/http/hostname string httpredir.debian.org
+d-i mirror/http/hostname string deb.debian.org
 d-i mirror/http/directory string /debian
 d-i mirror/http/proxy string
-d-i mirror/suite string wheezy
 
 tasksel tasksel/first multiselect ssh-server
 d-i pkgsel/upgrade select none

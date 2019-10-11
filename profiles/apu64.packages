@@ -1,3 +1,4 @@
+net-tools
 ntp
 firmware-atheros
 wireless-tools
@@ -5,3 +6,5 @@ wpasupplicant
 iw
 hdparm
 smartmontools
+dnsutils
+libpam-systemd

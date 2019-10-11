@@ -4,6 +4,9 @@ Debian installer CD for PC Engines APU board with mSATA drive
 Introduction
 ------------
 
+*CAUTION: This process does not work under ubuntu. Use a vritual machine running the same debian version you want to build*
+
+
 This is a set of configuration files for building a Debian installation
 CD optimized for the APU platform of PC Engines:
 http://www.pcengines.ch/apu.htm
